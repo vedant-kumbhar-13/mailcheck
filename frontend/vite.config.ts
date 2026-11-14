@@ -9,5 +9,5 @@ export default defineConfig({
       "/api": { target: "http://localhost:8000", changeOrigin: true },
     },
   },
-  test: { environment: "jsdom" },
+  test: { environment: "jsdom", globals: true },
 });
