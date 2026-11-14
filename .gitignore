@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.env
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+backend/static/
+backend/.venv/
+node_modules/
+dist/
+frontend/.vite/
