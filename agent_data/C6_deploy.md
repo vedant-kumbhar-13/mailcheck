@@ -106,6 +106,8 @@ services:
         value: "5"
       - key: MEMORY_GUARD_MB
         value: "380"
+      - key: ABSTRACT_API_KEY
+        sync: false          # paste your Abstract API key in the Render dashboard — leave empty to use DNS-only mode
     healthCheckPath: /api/health
 ```
 
