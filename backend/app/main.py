@@ -35,4 +35,12 @@ if os.path.isdir(static_dir):
 @app.on_event("startup")
 async def startup() -> None:
     logger.info("MailCheck starting up")
+    if settings.abstract_api_key:
+        logger.info("Abstract API deliverability check: ENABLED")
+    else:
+        logger.warning(
+            "Abstract API key not set (ABSTRACT_API_KEY). "
+            "Deliverability check is DISABLED — DNS-only mode active. "
+            "Get a free key at https://app.abstractapi.com/users/signup"
+        )
     asyncio.create_task(sweep_loop())

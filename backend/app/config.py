@@ -5,6 +5,14 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     allow_origins: str = "http://localhost:5173"
+
+    # Abstract API — email deliverability (SMTP RCPT TO probing via their service)
+    # Leave empty to disable. Get your free key at:
+    # https://app.abstractapi.com/users/signup → Email Validation API
+    # Free tier: 100 requests/month. No credit card required.
+    abstract_api_key: str = ""
+
+    # CSV limits
     max_csv_bytes: int = 2_097_152        # 2 MB
     max_csv_rows: int = 1_000
     max_running_jobs: int = 2

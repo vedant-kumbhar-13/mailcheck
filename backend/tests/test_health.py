@@ -12,3 +12,4 @@ async def test_health_returns_ok() -> None:
     body = r.json()
     assert body["status"] == "ok"
     assert isinstance(body["ts"], int)
+    assert body["deliverability_check"] in ("enabled", "disabled")

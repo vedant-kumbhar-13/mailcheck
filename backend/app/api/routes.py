@@ -26,7 +26,11 @@ bulk_limiter = RateLimiter(limit=settings.rate_bulk_per_hour, window_seconds=360
 
 @router.get("/health")
 async def health() -> JSONResponse:
-    return JSONResponse({"status": "ok", "ts": int(time.time())})
+    return JSONResponse({
+        "status": "ok",
+        "ts": int(time.time()),
+        "deliverability_check": "enabled" if settings.abstract_api_key else "disabled",
+    })
 
 
 # ── Single check ──────────────────────────────────────────────────────────────
