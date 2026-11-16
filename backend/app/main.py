@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
+from app.api.middleware import MemoryGuardMiddleware, SecurityHeadersMiddleware
 from app.api.routes import router
 from app.config import settings
 from app.services.sweeper import sweep_loop
@@ -21,6 +22,8 @@ app.add_middleware(
     allow_methods=["GET", "POST", "DELETE"],
     allow_headers=["Content-Type", "X-Job-Key"],
 )
+app.add_middleware(MemoryGuardMiddleware)
+app.add_middleware(SecurityHeadersMiddleware)
 
 app.include_router(router, prefix="/api")
 
